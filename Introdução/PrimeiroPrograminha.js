@@ -1,4 +1,4 @@
-const a = "meu pau"
+const a = "oii"
 console.log(a)
 
 const idade = 21;
