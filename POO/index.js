@@ -1,11 +1,52 @@
-const cliente1Nome = "Nathalia";
-const cliente1CPF = 123456789;
-const cliente1Agencia = 1001;
-const cliente1Slado = 0;
+class Cliente{
+   nome;
+   cpf;
+  
+}
 
-const cliente2Nome = "Waliks";
-const cliente2CPF = 987654321;
-const cliente2Agencia = 1001;
-const cliente2Slado = 50000;
+class contaCorrente{
+    agencia;
+    saldo =0;
 
-console.log(cliente1Nome);
+    sacar(valor){
+        if(this.saldo>=valor){
+            //this.#saldo -= valor; 
+            //tipo privado, aparece apenas se chamar dentro da classe
+            this.saldo-=valor;
+            return valor;
+        }
+    }
+
+    depositar(valor){
+        if (valor<=0){   
+             //se for verdadeiro, já para a função. "early return"
+            return;
+        }
+        this.saldo += valor;
+
+        console.log(this.saldo);
+    }
+
+    }
+
+
+const cliente1 = new Cliente();
+const cliente2 = new Cliente();
+
+
+ cliente1.nome = "Ricardo";
+ cliente1.cpf = 123456789;
+ 
+ cliente2.nome = "Waliks";
+ cliente2.cpf = 987654321;
+
+const contaCorrenteRicardo = new contaCorrente();
+contaCorrenteRicardo.saldo = 0;
+contaCorrenteRicardo.agencia = 1001;
+
+contaCorrenteRicardo.depositar(100);
+contaCorrenteRicardo.depositar(200);
+
+const valorSacado = contaCorrenteRicardo.sacar(50);
+console.log(valorSacado);
+console.log(contaCorrenteRicardo);
