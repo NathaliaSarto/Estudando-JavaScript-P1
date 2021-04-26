@@ -1,38 +1,8 @@
-class Cliente{
-   nome;
-   cpf;
-  
-}
-
-class contaCorrente{
-    agencia;
-    saldo =0;
-
-    sacar(valor){
-        if(this.saldo>=valor){
-            //this.#saldo -= valor; 
-            //tipo privado, aparece apenas se chamar dentro da classe
-            this.saldo-=valor;
-            return valor;
-        }
-    }
-
-    depositar(valor){
-        if (valor<=0){   
-             //se for verdadeiro, já para a função. "early return"
-            return;
-        }
-        this.saldo += valor;
-
-        console.log(this.saldo);
-    }
-
-    }
-
+import {Cliente} from "./Cliente.js"
+import {ContaCorrente} from "./ContaCorrente.js"
 
 const cliente1 = new Cliente();
 const cliente2 = new Cliente();
-
 
  cliente1.nome = "Ricardo";
  cliente1.cpf = 123456789;
@@ -40,13 +10,25 @@ const cliente2 = new Cliente();
  cliente2.nome = "Waliks";
  cliente2.cpf = 987654321;
 
-const contaCorrenteRicardo = new contaCorrente();
+const contaCorrenteRicardo = new ContaCorrente();
 contaCorrenteRicardo.saldo = 0;
 contaCorrenteRicardo.agencia = 1001;
+contaCorrenteRicardo.cliente = cliente1;
+contaCorrenteRicardo.depositar(500);
 
-contaCorrenteRicardo.depositar(100);
-contaCorrenteRicardo.depositar(200);
+const conta2 = new ContaCorrente();
+conta2.cliente = cliente2;
+conta2.agencia = 505;
 
-const valorSacado = contaCorrenteRicardo.sacar(50);
-console.log(valorSacado);
-console.log(contaCorrenteRicardo);
+let valor = 200;
+contaCorrenteRicardo.transferir(valor, conta2);
+console.log ("Valor: " , valor);
+
+
+console.log (conta2);
+//contaCorrenteRicardo.depositar(100);
+//contaCorrenteRicardo.depositar(200);
+
+//const valorSacado = contaCorrenteRicardo.sacar(50);
+//console.log(valorSacado);
+//console.log(contaCorrenteRicardo);
